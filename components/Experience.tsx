@@ -5,55 +5,78 @@ import { Calendar } from 'lucide-react';
 
 const Experience: React.FC = () => {
   return (
-    <section id="experience" className="py-20 bg-pastel-cream/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-800 mb-4">Experience & Job Simulations</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto">
+    <section id="experience" className="py-5 bg-pastel-cream">
+      <div className="container py-5">
+        <div className="text-center mb-5">
+          <h2 className="display-5 fw-bold text-dark mb-3">Experience & Job Simulations</h2>
+          <p className="text-secondary mx-auto" style={{ maxWidth: '600px' }}>
             Hands-on experience gained through professional simulations at top-tier organizations.
           </p>
         </div>
 
-        <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent">
-          {EXPERIENCE.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-            >
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-100 group-hover:bg-teal-50 text-slate-500 group-hover:text-teal-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-colors">
-                 <div className="w-3 h-3 bg-current rounded-full"></div>
-              </div>
-              
-              <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex flex-col gap-2 mb-3">
-                  <div className="flex items-center justify-between flex-wrap gap-2">
-                     <h3 className="font-heading text-lg font-bold text-slate-800">{exp.role}</h3>
-                     <span className="text-sm px-3 py-1 bg-pastel-blue text-blue-700 rounded-full font-medium border border-blue-100">{exp.type}</span>
+        <div className="position-relative" style={{ maxWidth: '800px', margin: '0 auto' }}>
+          {/* Vertical Line */}
+          <div className="position-absolute top-0 bottom-0 start-0 ms-4 border-start border-2 border-secondary opacity-25 d-md-none"></div>
+          <div className="position-absolute top-0 bottom-0 start-50 border-start border-2 border-secondary opacity-25 d-none d-md-block"></div>
+
+          <div className="d-flex flex-column gap-4">
+            {EXPERIENCE.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className={`row g-0 align-items-center ${index % 2 === 0 ? '' : 'flex-md-row-reverse'}`}
+              >
+                {/* Timeline Dot */}
+                <div className="col-auto d-md-flex justify-content-center position-absolute start-50 translate-middle-x d-none" style={{ zIndex: 1 }}>
+                  <div className="bg-light border border-white shadow-sm rounded-circle d-flex align-items-center justify-content-center" style={{ width: '40px', height: '40px' }}>
+                    <div className="bg-secondary rounded-circle" style={{ width: '12px', height: '12px' }}></div>
                   </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="font-semibold text-teal-600">{exp.company}</span>
-                    <span className="text-slate-500 flex items-center bg-slate-50 px-2 py-0.5 rounded">
-                      <Calendar size={14} className="mr-1.5" />
-                      {exp.period}
-                    </span>
+                </div>
+
+                {/* Mobile Dot */}
+                <div className="col-auto d-md-none ps-2 pe-3" style={{ zIndex: 1 }}>
+                   <div className="bg-light border border-white shadow-sm rounded-circle d-flex align-items-center justify-content-center" style={{ width: '32px', height: '32px' }}>
+                    <div className="bg-secondary rounded-circle" style={{ width: '10px', height: '10px' }}></div>
+                  </div>
+                </div>
+
+                {/* Content Card */}
+                <div className={`col ${index % 2 === 0 ? 'pe-md-5' : 'ps-md-5'}`}>
+                  <div className="bg-white p-4 rounded-4 shadow-sm border border-light card-hover h-100">
+                    <div className="d-flex justify-content-between align-items-start mb-2 flex-wrap gap-2">
+                       <h3 className="h5 fw-bold text-dark mb-0">{exp.role}</h3>
+                       <span className="badge bg-pastel-blue text-primary border border-primary-subtle rounded-pill fw-medium text-wrap text-start">
+                         {exp.type}
+                       </span>
+                    </div>
+                    
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                      <span className="text-teal fw-semibold">{exp.company}</span>
+                      <span className="text-muted small d-flex align-items-center bg-light px-2 py-1 rounded">
+                        <Calendar size={14} className="me-1" />
+                        {exp.period}
+                      </span>
+                    </div>
+                    
+                    <ul className="list-unstyled mb-0">
+                      {exp.details.map((detail, idx) => (
+                        <li key={idx} className="d-flex align-items-start mb-2 text-secondary small">
+                          <span className="d-inline-block rounded-circle me-2 mt-2 flex-shrink-0" style={{ width: '6px', height: '6px', backgroundColor: 'var(--pastel-peach)' }}></span>
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
                 
-                <ul className="space-y-2 mt-4">
-                  {exp.details.map((detail, idx) => (
-                    <li key={idx} className="flex items-start text-slate-600 text-sm">
-                      <span className="mr-2 mt-1.5 w-1.5 h-1.5 bg-pastel-peach rounded-full flex-shrink-0 ring-2 ring-orange-100"></span>
-                      <span className="leading-relaxed">{detail}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+                {/* Spacer for alternate side on desktop */}
+                <div className="col d-none d-md-block"></div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

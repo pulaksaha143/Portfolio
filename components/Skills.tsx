@@ -5,52 +5,57 @@ import { motion } from 'framer-motion';
 const Skills: React.FC = () => {
   const getColors = (idx: number) => {
     const colors = [
-      { bg: 'bg-pastel-rose', accent: 'bg-rose-400', border: 'border-rose-100' },
-      { bg: 'bg-pastel-blue', accent: 'bg-blue-400', border: 'border-blue-100' },
-      { bg: 'bg-pastel-yellow', accent: 'bg-yellow-400', border: 'border-yellow-100' },
-      { bg: 'bg-pastel-mint', accent: 'bg-teal-400', border: 'border-teal-100' },
-      { bg: 'bg-pastel-lavender', accent: 'bg-purple-400', border: 'border-purple-100' },
+      { bg: 'bg-pastel-rose', accent: '#fb7185', border: 'border-danger-subtle' },
+      { bg: 'bg-pastel-blue', accent: '#60a5fa', border: 'border-primary-subtle' },
+      { bg: 'bg-pastel-yellow', accent: '#facc15', border: 'border-warning-subtle' },
+      { bg: 'bg-pastel-mint', accent: '#2dd4bf', border: 'border-info-subtle' },
+      { bg: 'bg-pastel-lavender', accent: '#c084fc', border: 'border-secondary-subtle' },
     ];
     return colors[idx % colors.length];
   };
 
   return (
-    <section id="skills" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-800 mb-4">Technical Skills</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto">
+    <section id="skills" className="py-5 bg-white">
+      <div className="container py-5">
+        <div className="text-center mb-5">
+          <h2 className="display-5 fw-bold text-dark mb-3">Technical Skills</h2>
+          <p className="text-secondary mx-auto" style={{ maxWidth: '600px' }}>
             A comprehensive overview of my technical abilities and tools I use to build solutions.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="row g-4">
           {SKILLS.map((category, idx) => {
             const colors = getColors(idx);
             return (
-              <motion.div
-                key={category.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className={`${colors.bg} rounded-2xl p-8 border ${colors.border} shadow-sm hover:shadow-md transition-shadow`}
-              >
-                <h3 className="font-heading text-xl font-bold text-slate-800 mb-6 flex items-center">
-                  <span className={`w-2 h-8 rounded-full mr-3 ${colors.accent}`}></span>
-                  {category.name}
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {category.skills.map((skill) => (
+              <div className="col-md-6" key={category.name}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className={`h-100 p-4 rounded-4 border ${colors.border} shadow-sm card-hover ${colors.bg}`}
+                >
+                  <h3 className="h4 fw-bold text-dark mb-4 d-flex align-items-center">
                     <span 
-                      key={skill}
-                      className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-slate-700 text-sm font-medium border border-white/50 shadow-sm hover:bg-white transition-colors cursor-default"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
+                      className="d-inline-block rounded-pill me-3" 
+                      style={{ width: '6px', height: '32px', backgroundColor: colors.accent }}
+                    ></span>
+                    {category.name}
+                  </h3>
+                  <div className="d-flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <span 
+                        key={skill}
+                        className="px-3 py-2 bg-white rounded-pill text-dark small fw-medium border border-light shadow-sm"
+                        style={{ backdropFilter: 'blur(5px)', background: 'rgba(255,255,255,0.8)' }}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
             );
           })}
         </div>

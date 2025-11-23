@@ -1,53 +1,59 @@
-
 import React from 'react';
 import { CONTACT } from '../constants';
 import { Mail, MapPin, Linkedin, Github } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-pastel-blue to-pastel-purple rounded-[2.5rem] p-8 md:p-12 text-center shadow-lg">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-slate-800 mb-6">Let's Connect</h2>
-          <p className="text-slate-600 mb-10 max-w-xl mx-auto">
-            I'm currently looking for new opportunities in AI & Machine Learning. 
-            Whether you have a question or just want to say hi, my inbox is always open!
-          </p>
-          
-          <div className="flex flex-col md:flex-row justify-center gap-6 mb-12">
-             <div className="flex items-center justify-center bg-white/60 backdrop-blur-sm p-4 rounded-xl">
-               <Mail className="text-teal-600 mr-3" size={20} />
-               <a href={`mailto:${CONTACT.email}`} className="text-slate-700 font-medium hover:text-teal-700 transition-colors">{CONTACT.email}</a>
-             </div>
-          </div>
+    <section id="contact" className="py-5 bg-white">
+      <div className="container py-5">
+        <div className="card border-0 rounded-5 p-4 p-md-5 text-center shadow" 
+             style={{ 
+               background: 'linear-gradient(135deg, var(--pastel-blue), var(--pastel-purple))' 
+             }}>
+          <div className="card-body p-0">
+            <h2 className="display-5 fw-bold text-dark mb-4">Let's Connect</h2>
+            <p className="lead text-secondary mb-5 mx-auto" style={{ maxWidth: '600px' }}>
+              I'm currently looking for new opportunities in AI & Machine Learning. 
+              Whether you have a question or just want to say hi, my inbox is always open!
+            </p>
+            
+            <div className="d-flex justify-content-center mb-5">
+               <div className="bg-white bg-opacity-75 p-3 rounded-4 d-flex align-items-center shadow-sm">
+                 <Mail className="text-teal me-3" size={20} />
+                 <a href={`mailto:${CONTACT.email}`} className="text-dark fw-medium text-decoration-none">{CONTACT.email}</a>
+               </div>
+            </div>
 
-           <div className="flex justify-center gap-6">
-                <a 
-                  href={CONTACT.linkedin} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-4 bg-white text-blue-600 rounded-full shadow-sm hover:shadow-md hover:scale-110 transition-all duration-300"
-                  title="LinkedIn"
-                >
-                  <Linkedin size={24} />
-                </a>
-                <a 
-                  href={CONTACT.github} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-4 bg-white text-slate-800 rounded-full shadow-sm hover:shadow-md hover:scale-110 transition-all duration-300"
-                  title="GitHub"
-                >
-                  <Github size={24} />
-                </a>
-          </div>
-          
-          <div className="mt-10 pt-10 border-t border-slate-200/50 flex flex-col items-center text-slate-500 text-sm">
-             <div className="flex items-center mb-2">
-               <MapPin size={16} className="mr-2" />
-               {CONTACT.location}
-             </div>
-             <p>© {new Date().getFullYear()} Pulak Saha. All rights reserved.</p>
+             <div className="d-flex justify-content-center gap-4">
+                  <a 
+                    href={CONTACT.linkedin} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn btn-light rounded-circle p-3 shadow-sm card-hover d-flex align-items-center justify-content-center"
+                    style={{ width: '60px', height: '60px' }}
+                    title="LinkedIn"
+                  >
+                    <Linkedin size={28} className="text-primary" />
+                  </a>
+                  <a 
+                    href={CONTACT.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn btn-light rounded-circle p-3 shadow-sm card-hover d-flex align-items-center justify-content-center"
+                    style={{ width: '60px', height: '60px' }}
+                    title="GitHub"
+                  >
+                    <Github size={28} className="text-dark" />
+                  </a>
+            </div>
+            
+            <div className="mt-5 pt-4 border-top border-secondary border-opacity-10">
+               <div className="d-flex justify-content-center align-items-center text-secondary small mb-2">
+                 <MapPin size={16} className="me-2" />
+                 {CONTACT.location}
+               </div>
+               <p className="text-secondary small mb-0">© {new Date().getFullYear()} Pulak Saha. All rights reserved.</p>
+            </div>
           </div>
         </div>
       </div>

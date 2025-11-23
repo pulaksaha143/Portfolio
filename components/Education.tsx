@@ -6,72 +6,75 @@ import { Award, GraduationCap, MapPin } from 'lucide-react';
 const Education: React.FC = () => {
   const getCertColor = (index: number) => {
       const colors = [
-          'bg-pastel-blue hover:bg-blue-100 border-blue-100',
-          'bg-pastel-pink hover:bg-pink-100 border-pink-100',
-          'bg-pastel-green hover:bg-green-100 border-green-100',
-          'bg-pastel-purple hover:bg-purple-100 border-purple-100',
-          'bg-pastel-yellow hover:bg-yellow-100 border-yellow-100',
-          'bg-pastel-orange hover:bg-orange-100 border-orange-100',
+          'bg-pastel-blue border-primary-subtle',
+          'bg-pastel-pink border-danger-subtle',
+          'bg-pastel-green border-success-subtle',
+          'bg-pastel-purple border-secondary-subtle',
+          'bg-pastel-yellow border-warning-subtle',
+          'bg-pastel-orange border-warning-subtle',
       ];
       return colors[index % colors.length];
   };
 
   return (
-    <section id="education" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="education" className="py-5 bg-white">
+      <div className="container py-5">
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="row g-5">
           {/* Education Column */}
-          <div>
-            <div className="flex items-center mb-8">
-              <div className="p-3 bg-rose-100 text-rose-600 rounded-xl mr-4 shadow-sm">
+          <div className="col-lg-6">
+            <div className="d-flex align-items-center mb-4">
+              <div className="p-3 bg-pastel-rose text-danger rounded-3 me-3">
                 <GraduationCap size={24} />
               </div>
-              <h2 className="font-heading text-3xl font-bold text-slate-800">Education</h2>
+              <h2 className="h2 fw-bold text-dark mb-0">Education</h2>
             </div>
 
-            <div className="space-y-6">
+            <div className="d-flex flex-column gap-3">
               {EDUCATION.map((edu, index) => (
-                <div key={index} className="bg-pastel-cream p-6 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
-                   <div className="absolute top-0 left-0 w-1 h-full bg-rose-300 group-hover:bg-rose-400 transition-colors"></div>
-                   <h3 className="font-heading text-lg font-bold text-slate-800">{edu.institution}</h3>
-                   <p className="text-teal-600 font-medium mb-2">{edu.degree}</p>
-                   <div className="flex flex-col sm:flex-row sm:items-center text-sm text-slate-500 gap-2 sm:gap-4">
-                      <span>{edu.period}</span>
-                      <span className="hidden sm:inline">•</span>
-                      <span className="flex items-center"><MapPin size={14} className="mr-1"/> {edu.location}</span>
+                <div key={index} className="card border-0 shadow-sm bg-pastel-cream overflow-hidden rounded-4">
+                   <div className="card-body p-4 position-relative">
+                      <div className="position-absolute top-0 start-0 bottom-0 bg-danger opacity-25" style={{ width: '4px' }}></div>
+                      <h3 className="h5 fw-bold text-dark">{edu.institution}</h3>
+                      <p className="text-teal fw-medium mb-2">{edu.degree}</p>
+                      <div className="d-flex flex-wrap gap-2 text-secondary small mb-2">
+                          <span>{edu.period}</span>
+                          <span className="d-none d-sm-inline">•</span>
+                          <span className="d-flex align-items-center"><MapPin size={14} className="me-1"/> {edu.location}</span>
+                      </div>
+                      {edu.grade && edu.grade !== 'NA' && (
+                        <span className="badge bg-white text-secondary border fw-normal mt-2">
+                          Grade: {edu.grade}
+                        </span>
+                      )}
                    </div>
-                   {edu.grade && edu.grade !== 'NA' && (
-                     <div className="mt-3 inline-block px-3 py-1 bg-white text-slate-600 text-xs font-semibold rounded-full border border-slate-100">
-                       Grade: {edu.grade}
-                     </div>
-                   )}
                 </div>
               ))}
             </div>
           </div>
 
           {/* Certifications Column */}
-          <div>
-             <div className="flex items-center mb-8">
-              <div className="p-3 bg-yellow-100 text-yellow-600 rounded-xl mr-4 shadow-sm">
+          <div className="col-lg-6">
+             <div className="d-flex align-items-center mb-4">
+              <div className="p-3 bg-pastel-yellow text-warning-emphasis rounded-3 me-3">
                 <Award size={24} />
               </div>
-              <h2 className="font-heading text-3xl font-bold text-slate-800">Certifications</h2>
+              <h2 className="h2 fw-bold text-dark mb-0">Certifications</h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="row g-3">
               {CERTIFICATIONS.map((cert, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: index * 0.03 }}
-                  className={`${getCertColor(index)} p-4 rounded-xl border shadow-sm transition-all duration-300 hover:-translate-y-1`}
-                >
-                  <h4 className="font-medium text-slate-800 text-sm leading-tight mb-2 line-clamp-2" title={cert.name}>{cert.name}</h4>
-                  <p className="text-xs text-slate-500 opacity-80">{cert.issuer}</p>
-                </motion.div>
+                <div className="col-sm-6" key={index}>
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: index * 0.03 }}
+                    className={`h-100 p-3 rounded-4 border shadow-sm card-hover ${getCertColor(index)}`}
+                  >
+                    <h4 className="h6 fw-bold text-dark mb-2 text-truncate" title={cert.name}>{cert.name}</h4>
+                    <p className="small text-secondary mb-0 opacity-75">{cert.issuer}</p>
+                  </motion.div>
+                </div>
               ))}
             </div>
           </div>
