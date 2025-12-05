@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Pulak Saha">
+    <title>Pulak Saha - AI/ML & Data Analytics Portfolio</title>
+    <!-- 
+        REMOVED: Google Fonts link to adhere to the request.
+        The font-family is now a web-safe system stack.
+    -->
+    <!-- Open Source Icons: Font Awesome (for social links and section icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /*
+        Color Palette derived from the uploaded image:
+        --color-mint: #A6E4D9;
+        --color-pale-green: #DDEECC;
+        --color-light-peach: #FDE6D0;
+        --color-light-coral: #FDD2C9;
+        --color-primary-accent: #FC807D;
+        --color-text-dark: #333;
+        --color-text-light: #4F4F4F;
+        */
+        :root {
+            --color-mint: #A6E4D9;
+            --color-pale-green: #DDEECC;
+            --color-light-peach: #FDE6D0;
+            --color-light-coral: #FDD2C9;
+            --color-primary-accent: #FC807D;
+            --color-text-dark: #333333;
+            --color-text-light: #555555;
+            /* Using a web-safe and system-preferred font stack */
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--color-text-dark);
+            background-color: var(--color-pale-green);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header / Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: var(--color-primary-accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: none; /* Hidden by default on mobile */
+        }
+
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--color-text-light);
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--color-primary-accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--color-primary-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: block; /* Visible on mobile */
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text-dark);
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        }
+
+        .mobile-nav.open {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-nav .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--color-primary-accent);
+        }
+
+        .mobile-nav a {
+            font-size: 1.75rem;
+            padding: 15px 0;
+            text-decoration: none;
+            color: var(--color-text-dark);
+            font-weight: 700;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--color-primary-accent);
+        }
+
+        /* Media Queries for Desktop Navigation */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        #hero {
+            background-color: var(--color-mint);
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        #hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 10px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        #hero p {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: var(--color-text-dark);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-weight: 600;
+        }
+
+        .social-links a {
+            color: var(--color-text-dark);
+            margin: 0 15px;
+            font-size: 1.75rem;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--color-primary-accent);
+            transform: scale(1.1);
+        }
+        
+        /* Contact Section Styling */
+        #contact {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .main-contact, .other-half-contact {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            background-color: white;
+        }
+
+        .main-contact h3, .other-half-contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--color-primary-accent);
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--color-text-dark);
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 2px solid var(--color-mint);
+        }
+
+        .contact-links a:hover {
+            background-color: var(--color-mint);
+            color: var(--color-text-dark);
+            border-color: var(--color-primary-accent);
+        }
+
+        .contact-links i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            color: var(--color-primary-accent);
+        }
+        
+        .other-half-contact .contact-links a i {
+            color: var(--color-text-dark);
+        }
+
+        /* General Section Styling */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--color-primary-accent);
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        /* Skills Section */
+        #skills .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .skill-item {
+            background-color: var(--color-light-peach);
+            padding: 20px 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-item:hover {
+            background-color: var(--color-primary-accent);
+            color: white;
+        }
+        
+        /* Projects Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            border-left: 5px solid var(--color-mint);
+            transition: border-left 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-left-color: var(--color-primary-accent);
+        }
+
+        .project-card h3 {
+            color: var(--color-primary-accent);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .project-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 15px;
+        }
+
+        .project-card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+        }
+
+        .project-card ul li::before {
+            content: "\f058"; /* Font Awesome check circle icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--color-mint);
+            font-size: 0.9rem;
+        }
+
+        /* Certifications Section */
+        #certifications .card {
+            padding: 0;
+        }
+
+        .cert-category-btn {
+            width: 100%;
+            padding: 15px 20px;
+            text-align: left;
+            background-color: var(--color-light-coral);
+            color: var(--color-text-dark);
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0;
+        }
+
+        .cert-category-btn:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .cert-category-btn:last-child {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .cert-category-btn:hover {
+            background-color: var(--color-primary-accent);
+            color: white;
+        }
+
+        .cert-category-btn i {
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+
+        .cert-content {
+            max-height: 0;
+            overflow: hidden;
+            background-color: white;
+            transition: max-height 0.4s ease-out;
+            padding: 0 20px;
+        }
+
+        .cert-content.open {
+            padding: 20px;
+            max-height: 1000px; /* Large enough value to show all content */
+            transition: max-height 0.7s ease-in, padding 0.2s ease-in 0.3s;
+        }
+
+        .cert-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .cert-content li {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--color-pale-green);
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        .cert-content li:last-child {
+            border-bottom: none;
+        }
+
+        /* Job Simulations */
+        .job-sim-grid {
+            /* Changed to fit 4 per row on large screens, or 2 per row on smaller tablets */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px;
+        }
+
+        .job-sim-card {
+            background-color: var(--color-light-peach);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .job-sim-card h4 {
+            font-size: 1.1rem;
+            color: var(--color-primary-accent);
+            margin-bottom: 5px;
+        }
+
+        .job-sim-card small {
+            display: block;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .job-sim-card ul {
+            list-style: none;
+            padding-left: 0;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .job-sim-card ul li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .job-sim-card ul li::before {
+            content: "•";
+            color: var(--color-primary-accent);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: var(--color-mint);
+            color: var(--color-text-dark);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#hero" class="logo">PULAK SAHA</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#job-simulations">Experience</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav" id="mobile-nav">
+        <span class="close-btn" id="close-btn">&times;</span>
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#skills" class="mobile-nav-link">Skills</a>
+        <a href="#projects" class="mobile-nav-link">Projects</a>
+        <a href="#job-simulations" class="mobile-nav-link">Experience</a>
+        <a href="#certifications" class="mobile-nav-link">Certifications</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <div class="container">
+        <!-- HERO SECTION -->
+        <section id="hero">
+            <h1>PULAK SAHA</h1>
+            <!-- UPDATED HEADLINE -->
+            <p>Aspiring AI/ML Developer | Certified Generative AI Educator (Google Gemini) | Prompt Engineering, LLMs, Data Analysis, & Python</p>
+            <div class="social-links">
+                <a href="mailto:pulaksaha802@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/pulak-saha-8a5836362" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/pulaksaha143" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </section>
+
+        <!-- ABOUT / EDUCATION -->
+        <section id="about">
+            <h2 class="section-title"><i class="fas fa-user-graduate"></i> Education & Profile</h2>
+            <div class="card">
+                <h3>Profile Summary</h3>
+                <p style="color: var(--color-text-light);">
+                    Highly motivated B.Tech CSE student focused on Artificial Intelligence, Machine Learning, and Data Analytics. Proficient in Python, SQL, and various ML libraries (scikit-learn, DeepFace), with hands-on experience in Generative AI tools like OpenAI, Gradio, and LLMs. Completed several industry-recognized job simulations and built production-ready projects demonstrating strong technical and analytical capabilities.
+                </p>
+            </div>
+
+            <!-- EDUCATION CARDS -->
+            <div class="job-sim-grid" style="margin-top: 30px;">
+                
+                <!-- UPDATED IIT INDORE ENTRY with new name and time -->
+                <div class="job-sim-card" style="background-color: var(--color-mint);">
+                    <h4>Indian Institute of Technology, Indore</h4>
+                    <small>Professional Certification Program in AI and Data Science</small>
+                    <small>May 2025 - Dec 2026</small>
+                    <p>Remote</p>
+                </div>
+                
+                <div class="job-sim-card" style="background-color: var(--color-light-coral);">
+                    <h4>PW Institute Of Innovation</h4>
+                    <small>B.Tech CSE | 2025-Present</small>
+                    <p>PUNE, MAHARASHTRA</p>
+                </div>
+                <div class="job-sim-card" style="background-color: var(--color-light-peach);">
+                    <h4>Saraswati Devi Public School</h4>
+                    <small>Class 12th | Grade: 63% | 2024-2025</small>
+                    <p>Kandi, Murshidabad, West Bengal</p>
+                </div>
+                <div class="job-sim-card" style="background-color: var(--color-light-coral);">
+                    <h4>Saraswati Devi Public School</h4>
+                    <small>Class 10th | Grade: 87% | 2022-2023</small>
+                    <p>Kandi, Murshidabad, West Bengal</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <h2 class="section-title"><i class="fas fa-brain"></i> Technical Skills</h2>
+            <div class="card skills-grid">
+                <div class="skill-item">Python</div>
+                <div class="skill-item">SQL (T-SQL)</div>
+                <div class="skill-item">Pandas / Matplotlib</div>
+                <div class="skill-item">scikit-learn</div>
+                <div class="skill-item">Machine Learning</div>
+                <div class="skill-item">Generative AI / LLMs</div>
+                <div class="skill-item">Prompt Engineering</div>
+                <div class="skill-item">OpenAI API / Gradio</div>
+                <div class="skill-item">Data Analysis & Reporting</div>
+                <div class="skill-item">Data Visualization</div>
+                <div class="skill-item">Power BI</div>
+                <div class="skill-item">Git & GitHub</div>
+                <div class="skill-item">C Programming Basics</div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects">
+            <h2 class="section-title"><i class="fas fa-code-branch"></i> Key Projects</h2>
+            <div class="project-grid">
+
+                <div class="card project-card">
+                    <h3>Real-Time Emotion Detection & Analytics App</h3>
+                    <p style="color: var(--color-text-light);">Real-time webcam app for facial emotion analysis.</p>
+                    <ul>
+                        <li>Built a DeepFace-based real-time webcam app detecting facial emotions.</li>
+                        <li>Overlaid dynamic emojis for interactive feedback.</li>
+                        <li>Designed an interactive analytics dashboard with live charts.</li>
+                        <li>Implemented CSV/PDF report generation and optimized performance.</li>
+                    </ul>
+                </div>
+
+                <div class="card project-card">
+                    <h3>AI Business Report Generator</h3>
+                    <p style="color: var(--color-text-light);">Automation tool for generating professional business reports.</p>
+                    <ul>
+                        <li>Python-based tool that reads business data from CSV.</li>
+                        <li>Uses `pandasql` for SQL-style analysis on dataframes.</li>
+                        <li>Creates revenue charts and generates a professional PDF report using FPDF.</li>
+                        <li>Automates manual reporting processes for small businesses and analysts.</li>
+                    </ul>
+                </div>
+
+                <div class="card project-card">
+                    <h3>Sales Data Dashboard using Python & SQL</h3>
+                    <p style="color: var(--color-text-light);">A full data analysis pipeline for monitoring product performance.</p>
+                    <ul>
+                        <li>Built a complete pipeline using Microsoft SQL Server, Python, and Jupyter Notebook.</li>
+                        <li>Queried sales data with SQL and used `pyodbc` to connect to Python.</li>
+                        <li>Analyzed data with `pandas` and visualized key metrics with `matplotlib`.</li>
+                        <li>Designed to monitor product performance and discover sales trends.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- JOB SIMULATIONS (EXPERIENCE) -->
+        <section id="job-simulations">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Job Simulations (Virtual Experience)</h2>
+            <div class="job-sim-grid">
+                
+                <!-- 1. JPMorgan Chase & Co -->
+                <div class="card job-sim-card">
+                    <h4>Quantitative Research (JPMorgan Chase & Co)</h4>
+                    <small>NOV 2025</small>
+                    <ul>
+                        <li>Estimated customer default probability via loan book analysis.</li>
+                        <li>Used dynamic programming to convert FICO scores for enhanced prediction.</li>
+                    </ul>
+                </div>
+
+                <!-- 2. BCG -->
+                <div class="card job-sim-card">
+                    <h4>GenAI Job Simulation (BCG)</h4>
+                    <small>June 2025</small>
+                    <ul>
+                        <li>Developed an AI-powered financial chatbot for BCG's GenAI Consulting.</li>
+                        <li>Integrated and interpreted complex 10-K/10-Q financial data.</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Quantium -->
+                <div class="card job-sim-card">
+                    <h4>Data Analytics (Quantium)</h4>
+                    <small>July 2025</small>
+                    <ul>
+                        <li>Conducted customer insights and commercial recommendations using transaction data.</li>
+                        <li>Compiled analytical findings into comprehensive reports for Category Managers.</li>
+                    </ul>
+                </div>
+
+                <!-- 4. Deloitte (Technology) -->
+                <div class="card job-sim-card">
+                    <h4>Technology Job Simulation (Deloitte Australia)</h4>
+                    <small>Jun 2025</small>
+                    <ul>
+                        <li>Completed simulation involving development and coding principles.</li>
+                        <li>Wrote a detailed proposal for creating a client-facing technology dashboard.</li>
+                    </ul>
+                </div>
+                
+                <!-- 5. Deloitte (Data Analytics) -->
+                <div class="card job-sim-card">
+                    <h4>Data Analytics (Deloitte)</h4>
+                    <small>Jun 2025</small>
+                    <ul>
+                        <li>Involved data analysis and forensic technology, created a Tableau dashboard.</li>
+                        <li>Used Excel to classify data and draw business conclusions.</li>
+                    </ul>
+                </div>
+                
+                <!-- 6. TCS (Data Visualization) -->
+                <div class="card job-sim-card">
+                    <h4>Data Visualization (Tata Consultancy Services)</h4>
+                    <small>Jun 2025</small>
+                    <ul>
+                        <li>Completed simulation involving creating strategic data visualizations for clients.</li>
+                        <li>Prepared questions for a meeting with client senior leadership.</li>
+                    </ul>
+                </div>
+
+                <!-- 7. TCS (GenAI-Powered Data Analytics) -->
+                <div class="card job-sim-card">
+                    <h4>GenAI-Powered Data Analytics (Tata Consultancy Services)</h4>
+                    <small>Jun 2025</small>
+                    <ul>
+                        <li>Performed exploratory data analysis using GenAI tools for risk identification.</li>
+                        <li>Designed an AI-driven collections strategy with ethical compliance frameworks.</li>
+                    </ul>
+                </div>
+                
+                <!-- 8. Skyscanner -->
+                <div class="card job-sim-card">
+                    <h4>Front-End Software Engineering (Skyscanner)</h4>
+                    <small>NOV 2025</small>
+                    <ul>
+                        <li>Built a React web application as a Front-End Engineer.</li>
+                        <li>Developed a travel date-picking page utilizing Skyscanner's Backpack library.</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </section>
+
+
+        <!-- CERTIFICATIONS SECTION -->
+        <section id="certifications">
+            <!-- Title updated in the previous step -->
+            <h2 class="section-title"><i class="fas fa-certificate"></i> Professional Certifications</h2>
+            <div class="card cert-list">
+
+                <button class="cert-category-btn" data-category="ai-ml">
+                    Generative AI & LLMs (8 Certifications)
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="cert-content" id="cert-ai-ml">
+                    <ul>
+                        <li>Generative AI in Action (IBM)</li>
+                        <li>ChatGPT Prompt Engineering for Developers (DeepLearning.AI & OpenAI)</li>
+                        <li>Building Generative AI Applications with Gradio (DeepLearning.AI)</li>
+                        <li>Fundamentals of LLMs (Hugging Face)</li>
+                        <li>How to Build a Chatbot (IBM SkillBuild)</li>
+                        <li>LangChain for LLM App Development (Simplilearn)</li>
+                        <li>AI Tools Workshop (Be10X)</li>
+                        <li>AI Upskilling Certificate: Technical Foundation (Qualcomm Academy)</li>
+                    </ul>
+                </div>
+
+                <button class="cert-category-btn" data-category="data-analytics">
+                    Data & Business Intelligence (8 Certifications)
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="cert-content" id="cert-data-analytics">
+                    <ul>
+                        <li>Data Analytics (NoviTech R&D Private Limited)</li>
+                        <li>Power BI for Beginners (Simplilearn)</li>
+                        <li>Power BI Full Course (Learnit Training via Cursa)</li>
+                        <li>Power BI Workshop (Office Master)</li>
+                        <li>Data Visualization: Empowering Business with Effective Insights (TCS)</li>
+                        <li>Data Analytics Job Simulation (Deloitte)</li>
+                        <li>Data Analytics Job Simulation (Quantium)</li>
+                        <li>GenAI-Powered Data Analytics Job Simulation (TCS)</li>
+                    </ul>
+                </div>
+
+                <button class="cert-category-btn" data-category="coding-ml">
+                    Coding & Core ML (6 Certifications)
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="cert-content" id="cert-coding-ml">
+                    <ul>
+                        <li>Python Course for Beginners: Mastering the Essentials (Scaler)</li>
+                        <li>SQL Course (Intellipaat)</li>
+                        <li>Microsoft SQL Certification Training (Intellipaat)</li>
+                        <li>scikit-learn for Beginners (Simplilearn SkillUp)</li>
+                        <li>Introduction to Machine Learning with scikit-learn (Data School)</li>
+                        <li>Vibe Coding 101 with Replit! (DeepLearning.AI)</li>
+                    </ul>
+                </div>
+
+                <button class="cert-category-btn" data-category="google-sims">
+                    Google & Job Simulation Experience (7 Certifications)
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="cert-content" id="cert-google-sims">
+                    <ul>
+                        <li>Gemini Certified Educator (Google)</li>
+                        <li>Gemini Certified University Student (Google)</li>
+                        <li>Technology Job Simulation (Deloitte Australia)</li>
+                        <li>GenAI Job Simulation (BCG)</li>
+                        <li>Quantitative Research Job Simulation (JPMorgan Chase & Co)</li>
+                        <li>Front-End Software Engineering (Skyscanner)</li>
+                        <li>Data Visualization (Tata Consultancy Services)</li>
+                    </ul>
+                </div>
+                
+                <!-- EVENTS SECTION - Renamed and updated for participation -->
+                <button class="cert-category-btn" data-category="events">
+                    Events & Participation
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="cert-content" id="cert-events">
+                    <ul>
+                        <li>MumbaiHacks 2025 (Organized by TEAM - Tech Entrepreneurs Association of Mumbai)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT ME SECTION (New Section) -->
+        <section id="contact">
+            <h2 class="section-title"><i class="fas fa-paper-plane"></i> Get In Touch</h2>
+            <div class="contact-content">
+                
+                <!-- Main Contact Block -->
+                <div class="main-contact">
+                    <h3>Connect Professionally</h3>
+                    <p style="color: var(--color-text-light); max-width: 600px; margin: 0 auto 20px;">
+                        I am actively seeking opportunities in AI/ML and Data Analytics. Feel free to connect for collaborations, questions, or just a chat about technology!
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:pulaksaha802@gmail.com" target="_blank">
+                            <i class="fas fa-envelope"></i> pulaksaha802@gmail.com
+                        </a>
+                        <a href="https://www.linkedin.com/in/pulak-saha-8a5836362" target="_blank">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/pulaksaha143" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- The Other Half Of The Story Block -->
+                <div class="other-half-contact" style="background-color: var(--color-light-peach);">
+                    <h3>The Other Half Of The Story</h3>
+                    <div class="contact-links">
+                        <a href="mailto:rikkhaghosh16@gmail.com" target="_blank" style="border-color: var(--color-primary-accent); background-color: white;">
+                            <i class="fas fa-envelope" style="color: var(--color-primary-accent);"></i> rikkhaghosh16@gmail.com
+                        </a>
+                        <a href="https://www.instagram.com/rih._14/" target="_blank" style="border-color: var(--color-primary-accent); background-color: white;">
+                            <i class="fab fa-instagram" style="color: var(--color-primary-accent);"></i> Instagram (rih._14)
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; <span id="current-year"></span> Pulak Saha.
+    </footer>
+
+    <script>
+        // --- Navigation Toggle Logic ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMobileNav() {
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : 'auto';
+        }
+
+        menuToggle.addEventListener('click', toggleMobileNav);
+        closeBtn.addEventListener('click', toggleMobileNav);
+
+        // Close mobile nav when a link is clicked
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileNav);
+        });
+
+        // --- Certification Accordion Logic ---
+        const categoryButtons = document.querySelectorAll('.cert-category-btn');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
+                const content = document.getElementById(`cert-${category}`);
+                const icon = button.querySelector('i');
+
+                // Close all other open sections
+                document.querySelectorAll('.cert-content.open').forEach(openContent => {
+                    if (openContent !== content) {
+                        openContent.classList.remove('open');
+                        openContent.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                // Toggle the clicked section
+                content.classList.toggle('open');
+                if (content.classList.contains('open')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // --- Footer Year Logic ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Smooth Scrolling for all links ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
