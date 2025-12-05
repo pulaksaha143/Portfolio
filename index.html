@@ -3,33 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Pulak Saha">
     <title>Pulak Saha - AI/ML & Data Analytics Portfolio</title>
-    <!-- 
-        REMOVED: Google Fonts link to adhere to the request.
-        The font-family is now a web-safe system stack.
-    -->
     <!-- Open Source Icons: Font Awesome (for social links and section icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /*
-        Color Palette derived from the uploaded image:
-        --color-mint: #A6E4D9;
-        --color-pale-green: #DDEECC;
-        --color-light-peach: #FDE6D0;
-        --color-light-coral: #FDD2C9;
-        --color-primary-accent: #FC807D;
-        --color-text-dark: #333;
-        --color-text-light: #4F4F4F;
+        New Color Palette:
+        --color-primary-accent: #9C2D41 (Burgundy - Dark Accent for Headers/Links)
+        --color-mint: #F6CBB7 (Scallop Seashell - Hero BG, Light Accent BG)
+        --color-pale-green: #FAF7F4 (Cream - Main Body Background)
+        --color-light-peach: #F6CBB7 (Scallop Seashell - Skill & Card BG)
+        --color-light-coral: #CB857C (Dusty Rose - Tertiary Accent BG, Cert Buttons)
         */
         :root {
-            --color-mint: #A6E4D9;
-            --color-pale-green: #DDEECC;
-            --color-light-peach: #FDE6D0;
-            --color-light-coral: #FDD2C9;
-            --color-primary-accent: #FC807D;
-            --color-text-dark: #333333;
-            --color-text-light: #555555;
+            --color-primary-accent: #9C2D41; /* Burgundy - Headers, Links, Highlights */
+            --color-text-dark: #333333; /* Standard Dark Gray for Body Text Contrast */
+            --color-text-light: #555555; /* Standard Medium Gray for Secondary Text Contrast */
+
+            /* Backgrounds and Secondary Accents (Mapped from new palette) */
+            --color-pale-green: #FAF7F4; /* Cream - Body Background */
+            --color-mint: #F6CBB7; /* Scallop Seashell - Hero BG, Footer BG, Subtle Borders */
+            --color-light-peach: #F6CBB7; /* Scallop Seashell - Skill BG, Job Sim Card BG */
+            --color-light-coral: #CB857C; /* Dusty Rose - Cert Button BG, Job Sim Accent BG */
+
             /* Using a web-safe and system-preferred font stack */
             --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
@@ -126,7 +122,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: white;
+            background-color: var(--color-pale-green); /* Use Cream for BG */
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -175,7 +171,7 @@
 
         /* Hero Section */
         #hero {
-            background-color: var(--color-mint);
+            background-color: var(--color-mint); /* Scallop Seashell */
             padding: 80px 20px;
             text-align: center;
             border-radius: 15px;
@@ -186,7 +182,7 @@
             font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 10px;
             font-weight: 900;
-            color: white;
+            color: var(--color-primary-accent); /* Changed to Burgundy for contrast against light BG */
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
@@ -252,19 +248,19 @@
             font-weight: 600;
             padding: 10px 15px;
             border-radius: 5px;
-            border: 2px solid var(--color-mint);
+            border: 2px solid var(--color-mint); /* Scallop Seashell border */
         }
 
         .contact-links a:hover {
-            background-color: var(--color-mint);
+            background-color: var(--color-mint); /* Scallop Seashell hover BG */
             color: var(--color-text-dark);
-            border-color: var(--color-primary-accent);
+            border-color: var(--color-primary-accent); /* Burgundy hover border */
         }
 
         .contact-links i {
             margin-right: 10px;
             font-size: 1.2rem;
-            color: var(--color-primary-accent);
+            color: var(--color-primary-accent); /* Burgundy icon */
         }
         
         .other-half-contact .contact-links a i {
@@ -281,7 +277,7 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 40px;
-            color: var(--color-primary-accent);
+            color: var(--color-primary-accent); /* Burgundy */
         }
 
         .card {
@@ -301,7 +297,7 @@
         }
 
         .skill-item {
-            background-color: var(--color-light-peach);
+            background-color: var(--color-light-peach); /* Scallop Seashell */
             padding: 20px 10px;
             border-radius: 8px;
             font-weight: 600;
@@ -310,7 +306,7 @@
         }
 
         .skill-item:hover {
-            background-color: var(--color-primary-accent);
+            background-color: var(--color-primary-accent); /* Burgundy */
             color: white;
         }
         
@@ -322,16 +318,16 @@
         }
 
         .project-card {
-            border-left: 5px solid var(--color-mint);
+            border-left: 5px solid var(--color-mint); /* Scallop Seashell border */
             transition: border-left 0.3s ease;
         }
 
         .project-card:hover {
-            border-left-color: var(--color-primary-accent);
+            border-left-color: var(--color-primary-accent); /* Burgundy hover border */
         }
 
         .project-card h3 {
-            color: var(--color-primary-accent);
+            color: var(--color-primary-accent); /* Burgundy */
             margin-bottom: 10px;
             font-weight: 700;
         }
@@ -356,7 +352,7 @@
             font-weight: 900;
             position: absolute;
             left: 0;
-            color: var(--color-mint);
+            color: var(--color-mint); /* Scallop Seashell icon color */
             font-size: 0.9rem;
         }
 
@@ -369,7 +365,7 @@
             width: 100%;
             padding: 15px 20px;
             text-align: left;
-            background-color: var(--color-light-coral);
+            background-color: var(--color-light-coral); /* Dusty Rose */
             color: var(--color-text-dark);
             border: none;
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -393,7 +389,7 @@
         }
 
         .cert-category-btn:hover {
-            background-color: var(--color-primary-accent);
+            background-color: var(--color-primary-accent); /* Burgundy hover BG */
             color: white;
         }
 
@@ -423,7 +419,7 @@
 
         .cert-content li {
             padding: 8px 0;
-            border-bottom: 1px dashed var(--color-pale-green);
+            border-bottom: 1px dashed var(--color-mint); /* Scallop Seashell divider */
             color: var(--color-text-light);
             font-size: 0.95rem;
         }
@@ -441,14 +437,31 @@
         }
 
         .job-sim-card {
-            background-color: var(--color-light-peach);
+            background-color: var(--color-light-peach); /* Scallop Seashell */
             padding: 20px;
             border-radius: 10px;
         }
+        
+        /* Specific accent background for two cards */
+        .job-sim-card:nth-child(1), 
+        .job-sim-card:nth-child(4),
+        .job-sim-card:nth-child(7) {
+            background-color: var(--color-light-coral); /* Dusty Rose */
+        }
+        .job-sim-card:nth-child(2),
+        .job-sim-card:nth-child(5),
+        .job-sim-card:nth-child(8) {
+            background-color: var(--color-mint); /* Scallop Seashell */
+        }
+        .job-sim-card:nth-child(3),
+        .job-sim-card:nth-child(6) {
+             background-color: var(--color-light-peach); /* Scallop Seashell */
+        }
+
 
         .job-sim-card h4 {
             font-size: 1.1rem;
-            color: var(--color-primary-accent);
+            color: var(--color-primary-accent); /* Burgundy */
             margin-bottom: 5px;
         }
 
@@ -473,7 +486,7 @@
 
         .job-sim-card ul li::before {
             content: "•";
-            color: var(--color-primary-accent);
+            color: var(--color-primary-accent); /* Burgundy bullet */
             position: absolute;
             left: 0;
         }
@@ -483,7 +496,7 @@
             text-align: center;
             padding: 20px;
             margin-top: 40px;
-            background-color: var(--color-mint);
+            background-color: var(--color-mint); /* Scallop Seashell */
             color: var(--color-text-dark);
             font-weight: 500;
         }
@@ -523,7 +536,6 @@
         <!-- HERO SECTION -->
         <section id="hero">
             <h1>PULAK SAHA</h1>
-            <!-- UPDATED HEADLINE -->
             <p>Aspiring AI/ML Developer | Certified Generative AI Educator (Google Gemini) | Prompt Engineering, LLMs, Data Analysis, & Python</p>
             <div class="social-links">
                 <a href="mailto:pulaksaha802@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
@@ -545,7 +557,6 @@
             <!-- EDUCATION CARDS -->
             <div class="job-sim-grid" style="margin-top: 30px;">
                 
-                <!-- UPDATED IIT INDORE ENTRY with new name and time -->
                 <div class="job-sim-card" style="background-color: var(--color-mint);">
                     <h4>Indian Institute of Technology, Indore</h4>
                     <small>Professional Certification Program in AI and Data Science</small>
@@ -806,7 +817,7 @@
             </div>
         </section>
 
-        <!-- CONTACT ME SECTION (New Section) -->
+        <!-- CONTACT ME SECTION -->
         <section id="contact">
             <h2 class="section-title"><i class="fas fa-paper-plane"></i> Get In Touch</h2>
             <div class="contact-content">
@@ -834,10 +845,10 @@
                 <div class="other-half-contact" style="background-color: var(--color-light-peach);">
                     <h3>The Other Half Of The Story</h3>
                     <div class="contact-links">
-                        <a href="mailto:rikkhaghosh16@gmail.com" target="_blank" style="border-color: var(--color-primary-accent); background-color: white;">
-                            <i class="fas fa-envelope" style="color: var(--color-primary-accent);"></i> rikkhaghosh16@gmail.com
+                         <a href="mailto:rikkhaghosh16@gmail.com" target="_blank" style="border-color: var(--color-primary-accent); background-color: white;">
+                            <i class="fas fa-envelope" style="color: var(--color-primary-accent);"></i> rikkkaghosh16@gmail.com
                         </a>
-                        <a href="https://www.instagram.com/rih._14/" target="_blank" style="border-color: var(--color-primary-accent); background-color: white;">
+                         <a href="https://www.instagram.com/rih._14/" target="_blank" style="border-color: var(--color-primary-accent); background-color: white;">
                             <i class="fab fa-instagram" style="color: var(--color-primary-accent);"></i> Instagram (rih._14)
                         </a>
                     </div>
